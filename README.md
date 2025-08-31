@@ -1,13 +1,12 @@
-# Django Learning Lab - ALX
+# Introduction to Django - Django Learning Lab - ALX
 
-This repository contains Django learning projects and exercises for the ALX Django course.
+This repository contains the **Introduction to Django** project and other Django learning exercises for the ALX Django course.
 
-## Projects
+## Introduction to Django Project
 
-### Introduction to Django
-Located in the `Introduction_to_Django` directory, this project demonstrates the basic Django development environment setup.
+The main project in this repository is the **Introduction to Django** development environment setup, which demonstrates the basic Django project structure and configuration.
 
-#### Project Structure
+### Project Structure
 ```
 Introduction_to_Django/
 ├── LibraryProject/              # Django project directory
@@ -22,10 +21,10 @@ Introduction_to_Django/
 │       └── asgi.py             # ASGI application
 ```
 
-## Getting Started
+## Getting Started with Introduction to Django
 
 1. Clone this repository
-2. Navigate to the specific project directory
+2. Navigate to the `Introduction_to_Django` directory
 3. Set up a virtual environment
 4. Install Django: `pip install django`
 5. Run the development server: `python manage.py runserver`
@@ -38,5 +37,6 @@ Introduction_to_Django/
 ## Repository Information
 
 - **Repository**: Alx_DjangoLearnLab
+- **Main Project**: Introduction to Django
 - **Course**: Django Learning - ALX
 - **Status**: Active Development
