@@ -3,6 +3,20 @@ from .views import list_books
 from . import views
 from django.contrib.auth import views as auth_views
 from .views import register
+from django.shortcuts import render, redirect
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
+
+def register(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect("home")  # or wherever you want
+    else:
+        form = UserCreationForm()
+    return render(request, "relationship_app/register.html", {"form": form})
 
 urlpatterns = [
     path('books/', views.list_books, name='list_books'),
