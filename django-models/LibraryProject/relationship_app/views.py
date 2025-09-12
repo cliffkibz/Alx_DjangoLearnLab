@@ -77,7 +77,7 @@ class BookForm(ModelForm):
 
 
 # Permission-secured CRUD views for Book
-@permission_required('relationship_app.can_add_book', login_url='login')
+@permission_required('relationship_app.can_add_book')
 def add_book(request):
     if request.method == 'POST':
         form = BookForm(request.POST)
@@ -89,18 +89,13 @@ def add_book(request):
     return render(request, 'relationship_app/book_form.html', {'form': form, 'action': 'Add'})
 
 
-@permission_required('relationship_app.can_change_book', login_url='login')
+@permission_required('relationship_app.can_change_book')
 def edit_book(request, pk):
     book = get_object_or_404(Book, pk=pk)
     if request.method == 'POST':
-        form = BookForm(request.POST, instance=book)
-        if form.is_valid():
-            form.save()
-            return redirect('list_books')
-    else:
-        form = BookForm(instance=book)
-    return render(request, 'relationship_app/book_form.html', {'form': form, 'action': 'Edit'})
-
+        book.delete()
+        return redirect("list_books")
+    return render(request, "relationship_app/delete_book.html", {"book": book})
 
 @permission_required('relationship_app.can_delete_book', login_url='login')
 def delete_book(request, pk):
