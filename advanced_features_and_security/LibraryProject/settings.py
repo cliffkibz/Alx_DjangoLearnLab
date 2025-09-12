@@ -6,7 +6,9 @@ BASE_DIR = Path(__file__).resolve().parent
 SECRET_KEY = 'dev-insecure-secret-key-for-django-models-project'
 DEBUG = True
 ALLOWED_HOSTS = []
-AUTH_USER_MODEL = 'accounts.CustomUser'
+
+# Use the custom user model
+AUTH_USER_MODEL = 'LibraryProject.CustomUser'
 
 INSTALLED_APPS = [
     'django.contrib.auth',
@@ -65,3 +67,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Run migrations
+import os
+os.system('python manage.py makemigrations')
+os.system('python manage.py migrate')
