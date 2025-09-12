@@ -1,5 +1,5 @@
-from django.urls import path
+from django.urls import path, include
 
 urlpatterns = [
-    # No views needed for this mini project
+    path('', include('relationship_app.urls')),
 ]

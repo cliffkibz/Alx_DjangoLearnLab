@@ -51,8 +51,9 @@ DATABASES = {
 }
 
 LANGUAGE_CODE = 'en-us'
-LOGIN_REDIRECT_URL = "login"
-LOGOUT_REDIRECT_URL = "login"
+LOGIN_REDIRECT_URL = "list_books"
+# Let LogoutView render the provided logout template (no redirect)
+LOGOUT_REDIRECT_URL = None
 
 TIME_ZONE = 'UTC'
 USE_I18N = True
