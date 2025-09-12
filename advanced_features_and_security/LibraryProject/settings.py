@@ -8,7 +8,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # Use the custom user model
-AUTH_USER_MODEL = 'LibraryProject.CustomUser'
+AUTH_USER_MODEL = 'bookshelf.CustomUser'
 
 INSTALLED_APPS = [
     'django.contrib.auth',
