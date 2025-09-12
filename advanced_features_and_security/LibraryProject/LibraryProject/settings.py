@@ -1,3 +1,31 @@
+# --- HTTPS and Secure Redirects ---
+# Redirect all HTTP requests to HTTPS
+SECURE_SSL_REDIRECT = True  # Enforce HTTPS for all requests
+
+# HTTP Strict Transport Security (HSTS)
+SECURE_HSTS_SECONDS = 31536000  # 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+# Secure cookies (already set above, repeated for clarity)
+SESSION_COOKIE_SECURE = True  # Only send session cookies over HTTPS
+CSRF_COOKIE_SECURE = True     # Only send CSRF cookies over HTTPS
+
+# Secure headers (already set above, repeated for clarity)
+X_FRAME_OPTIONS = 'DENY'  # Prevent clickjacking
+SECURE_CONTENT_TYPE_NOSNIFF = True  # Prevent MIME type sniffing
+SECURE_BROWSER_XSS_FILTER = True    # Enable browser XSS filter
+
+# --- Deployment Note ---
+# To fully enable HTTPS, configure your web server (e.g., Nginx, Apache) with SSL/TLS certificates.
+# Example for Nginx:
+#   server {
+#       listen 443 ssl;
+#       ssl_certificate /path/to/cert.pem;
+#       ssl_certificate_key /path/to/key.pem;
+#       ...
+#   }
+# See Django and server documentation for full deployment instructions.
 # Use the custom user model
 AUTH_USER_MODEL = 'bookshelf.CustomUser'
 """
