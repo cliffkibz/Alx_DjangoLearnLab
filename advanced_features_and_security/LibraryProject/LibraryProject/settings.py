@@ -1,3 +1,5 @@
+# If behind a proxy/load balancer, ensure Django knows to trust X-Forwarded-Proto for HTTPS
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # --- HTTPS and Secure Redirects ---
 # Redirect all HTTP requests to HTTPS
 SECURE_SSL_REDIRECT = True  # Enforce HTTPS for all requests
