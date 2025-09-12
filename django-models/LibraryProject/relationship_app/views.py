@@ -4,8 +4,9 @@ from .models import Book
 from .models import Library   # 👈 this line must be here
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
-from django.shortcuts import redirect
-from django.contrib.auth.decorators import user_passes_test
+from django.forms import ModelForm
+from django.shortcuts import redirect, get_object_or_404
+from django.contrib.auth.decorators import user_passes_test, permission_required
 
 # Registration view
 def register(request):
@@ -66,3 +67,45 @@ def librarian_view(request):
 @user_passes_test(is_member, login_url='login')
 def member_view(request):
     return render(request, 'relationship_app/member_view.html')
+
+
+# Book form for create/update
+class BookForm(ModelForm):
+    class Meta:
+        model = Book
+        fields = ['title', 'author']
+
+
+# Permission-secured CRUD views for Book
+@permission_required('relationship_app.can_add_book', login_url='login')
+def add_book(request):
+    if request.method == 'POST':
+        form = BookForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('list_books')
+    else:
+        form = BookForm()
+    return render(request, 'relationship_app/book_form.html', {'form': form, 'action': 'Add'})
+
+
+@permission_required('relationship_app.can_change_book', login_url='login')
+def edit_book(request, pk):
+    book = get_object_or_404(Book, pk=pk)
+    if request.method == 'POST':
+        form = BookForm(request.POST, instance=book)
+        if form.is_valid():
+            form.save()
+            return redirect('list_books')
+    else:
+        form = BookForm(instance=book)
+    return render(request, 'relationship_app/book_form.html', {'form': form, 'action': 'Edit'})
+
+
+@permission_required('relationship_app.can_delete_book', login_url='login')
+def delete_book(request, pk):
+    book = get_object_or_404(Book, pk=pk)
+    if request.method == 'POST':
+        book.delete()
+        return redirect('list_books')
+    return render(request, 'relationship_app/book_confirm_delete.html', {'book': book})
