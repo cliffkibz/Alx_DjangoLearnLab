@@ -1,2 +1,2 @@
 # This file is a symlink to the actual settings.py for compatibility with checkers
-from .api_project.settings import *
+from api_project.settings import *
