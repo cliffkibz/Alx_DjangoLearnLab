@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 """
 See 'auth_permissions_doc.md' in this directory for details on authentication and permissions setup.
 """
@@ -21,3 +22,8 @@ class BookViewSet(viewsets.ModelViewSet):
 
     # You can use IsAdminUser or custom permissions for more control
     # Example: permission_classes = [permissions.IsAdminUser]
+=======
+from django.shortcuts import render
+
+# Create your views here.
+>>>>>>> 146de713437321d0f343a53201206dd113c6ee78

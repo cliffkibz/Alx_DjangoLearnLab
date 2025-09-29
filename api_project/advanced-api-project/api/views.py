@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 from rest_framework import generics, permissions
 from .models import Book
@@ -36,3 +37,8 @@ class BookDeleteView(generics.DestroyAPIView):
 # Each view uses DRF generic views for efficient CRUD operations.
 # Permissions are set so only authenticated users can create, update, or delete books.
 # List and detail views are open to all (read-only).
+=======
+from django.shortcuts import render
+
+# Create your views here.
+>>>>>>> 146de713437321d0f343a53201206dd113c6ee78
