@@ -5,7 +5,7 @@ from .serializers import BookSerializer
 
 # BookListView: List all books (read-only, open to all users)
 from rest_framework import filters
-from django_filters.rest_framework import DjangoFilterBackend
+from django_filters import rest_framework
 
 # BookListView: List all books with filtering, searching, and ordering capabilities
 class BookListView(generics.ListAPIView):
